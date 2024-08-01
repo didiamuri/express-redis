@@ -10,7 +10,7 @@
     "test": "NODE_ENV=test jest --watch"
   },
   "engines": {
-    "node": "20.x"
+    "node": "21.x"
   },
   "keywords": [],
   "author": "",
