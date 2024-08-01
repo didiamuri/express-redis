@@ -35,7 +35,7 @@ app.use(helmet({
     contentSecurityPolicy: {
         directives: {
             defaultSrc: ["'self'"],
-            connectSrc: ["'self'", "https://express.didiamuri.dev"],
+            connectSrc: ["'self'", "https://express-redis.didiamuri.dev"],
         }
     }
 }));
