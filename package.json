@@ -7,6 +7,7 @@
     "dev": "nodemon && pnpm doc",
     "build": "tsc -p tsconfig.prod.json",
     "start": "node -r ts-node/register/transpile-only -r tsconfig-paths/register --env-file=.env ./dist/src/server/app.js",
+    "build:digitalocean": "pnpm install --production=false && pnpm run build && rm -rf node_modules && pnpm install --production --frozen-lockfile",
     "test": "NODE_ENV=test jest --watch"
   },
   "engines": {
