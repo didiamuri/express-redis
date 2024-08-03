@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon && pnpm doc",
     "build": "tsc -p tsconfig.prod.json",
-    "start": "node -r ts-node/register/transpile-only --env-file=.env -r tsconfig-paths/register ./dist/src/server/app.js",
+    "start": "node -r ts-node/register/transpile-only -r tsconfig-paths/register ./dist/src/server/app.js",
     "test": "NODE_ENV=test jest --watch"
   },
   "engines": {
