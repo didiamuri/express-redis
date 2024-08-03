@@ -2,7 +2,7 @@
     "watch": ["src"],
     "ext": "ts,js,json,yml,yaml,mjs",
     "ignore": ["node_modules", "coverage", "dist"],
-    "exec": "node -r ts-node/register --env-file=.env -r tsconfig-paths/register ./src/server/app.ts",
+    "exec": "ts-node -r tsconfig-paths/register ./src/server/app.ts",
     "restartable": "rs",
     "env": {
       "NODE_ENV": "development"

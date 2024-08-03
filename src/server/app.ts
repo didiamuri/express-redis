@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import http from 'http';
 import express from 'express';
 import cookieParser from 'cookie-parser';
@@ -20,13 +21,21 @@ declare module 'express-session' {
     }
 }
 
-mongodb().then(_ => console.log('Connection to mongoDb successfully!')).catch(
-    e => new AppError(e.message ? e.message : e, e.statusCode ? e.statusCode : 500)
-);
+mongodb().then(_ =>
+    console.log(`
+        |---------------------------------------|
+        |  Connection to mongoDb successfully!  |
+        |---------------------------------------|
+    `)
+).catch( e => new AppError(e.message ? e.message : e, e.statusCode ? e.statusCode : 500));
 
-redis().then(_ => console.log('Connection to redis successfully!')).catch(
-    e => new AppError(e.message ? e.message : e, e.statusCode ? e.statusCode : 500)
-);
+redis().then(_ => 
+    console.log(`
+        |---------------------------------------|
+        |  Connection to redis successfully!    |
+        |---------------------------------------|
+    `)
+).catch( e => new AppError(e.message ? e.message : e, e.statusCode ? e.statusCode : 500));
 
 app.set('port', port);
 
@@ -49,6 +58,12 @@ app.use('/v1', routes);
 app.use('*', badUrl);
 app.use(errorHandler);
 
-server.listen(port, () => console.log(`Server is running on port ${port}`));
+server.listen(port, () => 
+    console.log(`
+        |---------------------------------------|
+        |  Server is running on port ${port}       |
+        |---------------------------------------|
+    `)
+);
 
 export default app;
