@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import http from 'http';
 import express from 'express';
 import cookieParser from 'cookie-parser';
