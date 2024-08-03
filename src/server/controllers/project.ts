@@ -8,12 +8,11 @@ export default class ProjectController {
             return next(new Error('Missing required fields'));
         }
         ProjectService.create(req.body, req.session.sub)
-            .then(project => {
+            .then(_ => {
                 res.status(201).json({
                     status: 'success',
                     statusCode: 201,
-                    message: 'Project created successfully',
-                    item: project,
+                    message: 'Project created successfully'
                 });
             })
             .catch(e => next(new AppError(e.message ? e.message : e, e.statusCode ? e.statusCode : 500)));
@@ -25,7 +24,7 @@ export default class ProjectController {
                 res.status(200).json({
                     status: 'success',
                     statusCode: 200,
-                    item: projects,
+                    items: projects,
                 });
             })
             .catch(e => next(new AppError(e.message ? e.message : e, e.statusCode ? e.statusCode : 500)));
@@ -67,12 +66,11 @@ export default class ProjectController {
             return next(new Error('Missing required fields'));
         }
         ProjectService.delete(req.params.id)
-            .then(project => {
+            .then(_ => {
                 res.status(200).json({
                     status: 'success',
                     statusCode: 200,
-                    message: 'Project deleted successfully',
-                    item: project,
+                    message: 'Project deleted successfully'
                 });
             })
             .catch(e => next(new AppError(e.message ? e.message : e, e.statusCode ? e.statusCode : 500)));
@@ -83,12 +81,11 @@ export default class ProjectController {
             return next(new Error('Missing required fields'));
         }
         ProjectService.inProgress(req.params.id)
-            .then(project => {
+            .then(_ => {
                 res.status(200).json({
                     status: 'success',
                     statusCode: 200,
-                    message: 'Project updated successfully',
-                    item: project,
+                    message: 'Project updated successfully'
                 });
             })
             .catch(e => next(new AppError(e.message ? e.message : e, e.statusCode ? e.statusCode : 500)));
@@ -99,12 +96,11 @@ export default class ProjectController {
             return next(new Error('Missing required fields'));
         }
         ProjectService.done(req.params.id)
-            .then(project => {
+            .then(_ => {
                 res.status(200).json({
                     status: 'success',
                     statusCode: 200,
-                    message: 'Project updated successfully',
-                    item: project,
+                    message: 'Project updated successfully'
                 });
             })
             .catch(e => next(new AppError(e.message ? e.message : e, e.statusCode ? e.statusCode : 500)));
