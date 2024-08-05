@@ -38,10 +38,6 @@ redis().then(_ =>
 
 app.set('port', port);
 
-if (process.env['NODE_ENV'] === 'production') {
-    app.set('trust proxy', 1);
-}
-
 app.use(cookieParser());
 app.use(helmet({
     contentSecurityPolicy: {

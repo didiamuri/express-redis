@@ -13,7 +13,8 @@ export default session({
         httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000,
         secure: process.env['NODE_ENV'] === 'production' ? true : false,
-        sameSite: process.env['NODE_ENV'] === 'production' ? 'none' : 'lax'
+        sameSite: process.env['NODE_ENV'] === 'production' ? 'none' : 'lax',
+        domain: process.env['NODE_ENV'] === 'production' ? '.didiamuri.dev' : 'localhost'
     },
     store: new RedisStore({
         client: redisClient,
