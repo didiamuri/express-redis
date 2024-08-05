@@ -26,17 +26,21 @@ mongodb().then(_ =>
         |  Connection to mongoDb successfully!  |
         |---------------------------------------|
     `)
-).catch( e => new AppError(e.message ? e.message : e, e.statusCode ? e.statusCode : 500));
+).catch(e => new AppError(e.message ? e.message : e, e.statusCode ? e.statusCode : 500));
 
-redis().then(_ => 
+redis().then(_ =>
     console.log(`
         |---------------------------------------|
         |  Connection to redis successfully!    |
         |---------------------------------------|
     `)
-).catch( e => new AppError(e.message ? e.message : e, e.statusCode ? e.statusCode : 500));
+).catch(e => new AppError(e.message ? e.message : e, e.statusCode ? e.statusCode : 500));
 
 app.set('port', port);
+
+if (process.env['NODE_ENV'] === 'production') {
+    app.set('trust proxy', 1);
+}
 
 app.use(cookieParser());
 app.use(helmet({
@@ -57,7 +61,7 @@ app.use('/v1', routes);
 app.use('*', badUrl);
 app.use(errorHandler);
 
-server.listen(port, () => 
+server.listen(port, () =>
     console.log(`
         |---------------------------------------|
         |  Server is running on port ${port}       |

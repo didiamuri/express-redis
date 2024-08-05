@@ -5,6 +5,7 @@ import { redisClient } from "@src/database/redis";
 export default session({
     resave: false,
     name: "sessionId",
+    proxy: true,
     rolling: true,
     saveUninitialized: false,
     secret: process.env['SESSION_SECRET_KEY'],
